@@ -1,4 +1,6 @@
-﻿namespace WstrzykiwanieSerwisów.Models
+﻿using Models.EntityModels;
+
+namespace WstrzykiwanieSerwisów.Models
 {
     public class PersonGroup
     {

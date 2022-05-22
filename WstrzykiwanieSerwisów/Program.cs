@@ -2,19 +2,19 @@ using Microsoft.EntityFrameworkCore;
 using WstrzykiwanieSerwisów;
 using WstrzykiwanieSerwisów.Data;
 using WstrzykiwanieSerwisów.Interfaces;
-using WstrzykiwanieSerwisów.Repositories;
-using WstrzykiwanieSerwisów.Services;
+
+
 
 var builder = WebApplication.CreateBuilder(args);
+ConfigurationManager configuration = builder.Configuration;
 
 // Add services to the container.
 builder.Services.AddRazorPages();
-builder.Services.AddProjectService();
 
 builder.Services.AddDbContext<PeopleContext>(options =>
-options.UseSqlServer(builder.Configuration.GetConnectionString("EFDemoDB")));
+options.UseSqlServer(configuration.GetConnectionString("WstrzykiwanieSerwisow")));
 
-
+builder.Services.AddProjectService();
 
 var app = builder.Build();
 

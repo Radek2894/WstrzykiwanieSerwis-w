@@ -1,10 +1,15 @@
-﻿using WstrzykiwanieSerwisów.Models;
+﻿using Models.EntityModels;
+using WstrzykiwanieSerwisów.Models;
 
 namespace WstrzykiwanieSerwisów.Interfaces
 {
     public interface IPersonRepository
     {
-        IQueryable<Person> GetAllActivePeople();
+        public void AddEntry(Person person);
+
+        public IQueryable<Person> GetAllEntries();
+
+        public IQueryable<Person> GetEntriesFromToday();
     }
 
 }

@@ -1,12 +1,19 @@
-﻿using WstrzykiwanieSerwisów.Models;
+﻿using Models.EntityModels;
+using Models.ViewModels;
+using WstrzykiwanieSerwisów.Models;
 using WstrzykiwanieSerwisów.ViewModels.Person;
 
 namespace WstrzykiwanieSerwisów.Interfaces
 {
     public interface IPersonService
     {
-        ListPersonForListVM GetPeopleForList();
-        IQueryable<Person> GetActivePeople();
+   
+        public void AddEntry(Person person);
+
+        public ListPersonForListVM GetPeople();
+
+        public ListPersonForListVM GetPeopleToday();
+      
     }
 
 

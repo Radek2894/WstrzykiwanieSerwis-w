@@ -11,7 +11,7 @@ using WstrzykiwanieSerwisów.Data;
 namespace WstrzykiwanieSerwisów.Migrations
 {
     [DbContext(typeof(PeopleContext))]
-    [Migration("20220512114958_init")]
+    [Migration("20220520085551_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

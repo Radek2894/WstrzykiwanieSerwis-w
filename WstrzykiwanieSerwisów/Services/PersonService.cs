@@ -1,51 +1,43 @@
-﻿using WstrzykiwanieSerwisów.Data;
+﻿using Extensions;
+using Models.EntityModels;
+using Models.ViewModels;
 using WstrzykiwanieSerwisów.Interfaces;
-using WstrzykiwanieSerwisów.Models;
 using WstrzykiwanieSerwisów.ViewModels.Person;
 
-namespace WstrzykiwanieSerwisów.Services
+namespace Services;
+
+public class PersonService : IPersonService
 {
-    public class PersonService : IPersonService
+    private readonly IPersonRepository _repo;
+
+    public PersonService(IPersonRepository repository)
     {
-        private readonly PeopleContext _context;
+        _repo = repository;
+    }
 
-        private readonly IPersonRepository _personRepo;
+   
 
-        public PersonService(IPersonRepository personRepo)
-        {
-            _personRepo = personRepo;
-        }
+    public void AddEntry(Person person)
+    {
+        _repo.AddEntry(person);
+    }
+    public PersonListModelView GetPeople()
+    {
+        var people = _repo.GetAllEntries().ToModel();
+        PersonListModelView result = new();
 
+        result.People = people.ToList();
+        result.Count = people.Count();
+        return result;
+    }
 
-        public PersonService(PeopleContext context)
-        {
-            _context = context;
-        }
-        public IQueryable<Person> GetActivePeople()
-        {
-            return _context.Person.Where(p => p.IsActive);
-        }
+    public PersonListModelView GetPeopleToday()
+    {
+        var people = _repo.GetEntriesFromToday().ToModel();
+        PersonListModelView result = new();
 
-        public ListPersonForListVM GetPeopleForList()
-        {
-            var people = _personRepo.GetAllActivePeople();
-            ListPersonForListVM result = new
-            ListPersonForListVM();
-            result.People = new List<PersonForListVm>();
-            foreach (var person in people)
-            {
-                // mapowanie obiektow
-                var pVM = new PersonForListVm()
-                {
-                    Id = person.Id,
-                    FullName = person.FirstName + " " +
-                person.LastName
-                };
-                result.People.Add(pVM);
-            }
-            result.Count = result.People.Count;
-            return result;
-        }
-
+        result.People = people.ToList();
+        result.Count = people.Count();
+        return result;
     }
 }

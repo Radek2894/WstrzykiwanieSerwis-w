@@ -1,6 +1,8 @@
-﻿using WstrzykiwanieSerwisów.Interfaces;
-using WstrzykiwanieSerwisów.Repositories;
-using WstrzykiwanieSerwisów.Services;
+﻿using Data.Repository;
+using Services;
+using WstrzykiwanieSerwisów.Interfaces;
+
+
 
 namespace WstrzykiwanieSerwisów
 {
@@ -9,10 +11,8 @@ namespace WstrzykiwanieSerwisów
         public static IServiceCollection AddProjectService(this
         IServiceCollection services)
         {
-            services.AddTransient<IPersonService,
-            PersonService>();
-            services.AddTransient<IPersonRepository,
-            PersonRepository>();
+            services.AddTransient<IPersonService, PersonService>();
+            services.AddTransient<IPersonRepository, PersonRepository>();
             return services;
         }
             

@@ -1,5 +1,6 @@
 ﻿using WstrzykiwanieSerwisów.Models;
 using Microsoft.EntityFrameworkCore;
+using Models.EntityModels;
 
 namespace WstrzykiwanieSerwisów.Data
 {
