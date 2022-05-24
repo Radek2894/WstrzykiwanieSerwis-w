@@ -12,7 +12,7 @@ ConfigurationManager configuration = builder.Configuration;
 builder.Services.AddRazorPages();
 
 builder.Services.AddDbContext<PeopleContext>(options =>
-options.UseSqlServer(configuration.GetConnectionString("WstrzykiwanieSerwisow")));
+options.UseSqlServer(configuration.GetConnectionString("Serwisy")));
 
 builder.Services.AddProjectService();
 

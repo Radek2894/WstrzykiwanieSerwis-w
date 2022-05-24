@@ -16,17 +16,15 @@ public class Person
     [Display(Name = "Imię")]
     [Required(ErrorMessage = "Pole imię jest wymagane")]
     [MaxLength(100)]
-    public string Name { get; set; }
+    public string? Name { get; set; }
+
     [Display(Name = "Nazwisko")]
     [MaxLength(100)]
     public string? LastName { get; set; }
+
+    [Display(Name = "DataRetrievedTime")]
     public DateTime DataRetrievedTime { get; set; }
-    public bool IsLeapYear { get; set; }
-    public void CheckIfLeapYear()
-    {
-        if ((this.Year % 4 == 0 || this.Year % 400 == 0) && this.Year % 100 != 0)
-            IsLeapYear = true;
-        else
-            IsLeapYear = false;
-    }
+
+    public bool IsLeapYear => (this.Year % 4 == 0 || this.Year % 400 == 0) && this.Year % 100 != 0;
+
 }

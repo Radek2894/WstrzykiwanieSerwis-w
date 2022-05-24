@@ -10,10 +10,10 @@ namespace WstrzykiwanieSerwisów.Interfaces
    
         public void AddEntry(Person person);
 
-        public ListPersonForListVM GetPeople();
+        public PersonListModelView GetPeople();
 
-        public ListPersonForListVM GetPeopleToday();
-      
+        public PersonListModelView GetPeopleToday();
+
     }
 
 

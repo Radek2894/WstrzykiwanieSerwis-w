@@ -4,7 +4,7 @@ using Models.EntityModels;
 using WstrzykiwanieSerwisów.Interfaces;
 
 
-namespace LeapYear.Pages
+namespace WstrzykiwanieSerwisów.Pages
 {
     [BindProperties]
     public class IndexModel : PageModel
@@ -23,22 +23,20 @@ namespace LeapYear.Pages
         public void OnGet()
         {
         }
-        public IActionResult OnPostYear()
+        public IActionResult OnPost()
         {
-
             if (ModelState.IsValid)
             {
-                if (Person.Name.Where(x => "123456789".Contains(x)).Count() > 0)
+                if (Person.Name.Any(x => "123456789".Contains(x)))
                 {
                     ModelState.AddModelError("Person.Name", "Imiona nie mogą zawierać liczb");
                 }
-                else if (Person?.LastName?.Where(x => "123456789".Contains(x)).Count() > 0)
+                else if (Person.LastName.Any(x => "123456789".Contains(x)))
                 {
                     ModelState.AddModelError("Person.LastName", "Nazwiska nie mogą zawierać liczb");
                 }
                 else
                 {
-                    Person.CheckIfLeapYear();
                     Person.DataRetrievedTime = DateTime.Now;
                     _personService.AddEntry(Person);
                     IsValidated = true;
